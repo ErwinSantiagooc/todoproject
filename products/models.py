@@ -28,3 +28,17 @@ class Product(models.Model):
     
     def __str__(self) -> str:
         return self.name
+    
+class Client(models.Model):
+    STATUSES = [
+        ("active", "Active"),
+        ("inactive", "Inactive")
+                
+       ]
+    name=models.CharField(max_length=100)
+    email=models.EmailField(unique=True)
+    phone=models.CharField(max_length=15, null=True, blank=True)
+    status = models.CharField(max_length=55, choices=STATUSES, default="active")
+    
+    def __str__(self) -> str:
+        return self.name
