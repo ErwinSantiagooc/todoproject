@@ -1,7 +1,6 @@
 # Variables
 PYTHON=python
 MANAGE=manage.py
-RUFF=ruff
 
 # Virtual environment
 VENV_DIR=venv
@@ -48,10 +47,3 @@ deploy:
 
 # Targets
 .PHONY: run test lint
-
-# ruff
-test:
-	$(PYTHON) -m unittest discover
-
-lint:
-	$(RUFF) .
