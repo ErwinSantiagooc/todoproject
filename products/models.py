@@ -42,3 +42,34 @@ class Client(models.Model):
     
     def __str__(self) -> str:
         return self.name
+    
+class Credit(models.Model):
+    STATUSES = [
+        ("active", "Active"),
+        ("inactive", "Inactive")
+                
+       ]
+    client=models.ForeignKey(Client, on_delete=models.CASCADE, related_name='credits')
+    poducts=models.ManyToManyField(Product, related_name='credits')
+    total_amount=models.DecimalField(max_digits=10, decimal_places=2)
+    start_date=models.DateField()
+    end_date=models.DateField()
+    status = models.CharField(max_length=55, choices=STATUSES, default="active")
+    
+    def __str__(self) -> str:
+        return f'Credit for {self.client.name}'
+    
+class Payment(models.Model):
+    STATUSES = [
+        ("active", "Active"),
+        ("inactive", "Inactive")
+                
+       ]
+    credit=models.ForeignKey(Credit, on_delete=models.CASCADE, related_name='payments')
+    client=models.ForeignKey(Client, on_delete=models.CASCADE, related_name='payments')
+    amount=models.DecimalField(max_digits=10, decimal_places=2)
+    payment_date=models.DateField()
+    status = models.CharField(max_length=55, choices=STATUSES, default="active")
+    
+    def __str__(self) -> str:
+        return f'Payment of {self.amount} by {self.client.name}'
