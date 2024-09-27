@@ -6,7 +6,7 @@ Erwin Santiago Ortiz Calderon - 1151965
 
 Luis Fernando Serrano Moreno  - 1151982
 
-Cristian Alejendro Vega Cruz  - 1151963
+Cristian Alejandro Vega Cruz  - 1151963
 
 # Django Product Management System
 
